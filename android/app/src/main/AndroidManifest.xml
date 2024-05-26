@@ -27,6 +27,7 @@
         <data android:scheme="myapp"/>
         <data android:scheme="com.covalisage.Dispatche"/>
         <data android:scheme="exp+dispatche"/>
+        <data android:scheme="com.dispatche"/>
       </intent-filter>
     </activity>
     <activity android:name="com.facebook.react.devsupport.DevSettingsActivity" android:exported="false"/>

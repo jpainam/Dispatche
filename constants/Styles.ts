@@ -19,4 +19,12 @@ export const defaultStyles = StyleSheet.create({
     backgroundColor: Colors.lightGray,
     marginLeft: 50,
   },
+  btn: {
+    height: 50,
+    borderRadius: 12,
+    alignItems: "center",
+    justifyContent: "center",
+    flexDirection: "row",
+    paddingHorizontal: 10,
+  },
 });
