@@ -6,7 +6,11 @@ import { Pressable } from "react-native";
 import Colors from "@/constants/Colors";
 import { useColorScheme } from "@/components/useColorScheme";
 import { useClientOnlyValue } from "@/components/useClientOnlyValue";
-import { Ionicons, MaterialCommunityIcons } from "@expo/vector-icons";
+import {
+  FontAwesome6,
+  Ionicons,
+  MaterialCommunityIcons,
+} from "@expo/vector-icons";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 // You can explore the built-in icon families and icons on the web at https://icons.expo.fyi/
@@ -46,8 +50,13 @@ export default function TabLayout() {
             title: "Listings",
             headerShown: false,
             tabBarIcon: ({ size, color }) => (
-              <MaterialCommunityIcons
-                name="phone-outline"
+              // <MaterialCommunityIcons
+              //   name="phone-outline"
+              //   size={size}
+              //   color={color}
+              // />
+              <FontAwesome6
+                name="person-walking-luggage"
                 size={size}
                 color={color}
               />
@@ -55,12 +64,15 @@ export default function TabLayout() {
           }}
         />
         <Tabs.Screen
-          name="index"
+          name="publish"
           options={{
-            title: "Tab One",
-            tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
+            title: "Publish",
+            tabBarIcon: ({ color }) => (
+              <TabBarIcon name="upload" color={color} />
+            ),
+            headerShown: false,
             headerRight: () => (
-              <Link href="/modal" asChild>
+              <Link href="/(modals)/modal" asChild>
                 <Pressable>
                   {({ pressed }) => (
                     <FontAwesome
@@ -87,14 +99,6 @@ export default function TabLayout() {
               backgroundColor: Colors.background,
               display: segments[2] === "[id]" ? "none" : "flex",
             },
-          }}
-        />
-
-        <Tabs.Screen
-          name="two"
-          options={{
-            title: "Tab Two",
-            tabBarIcon: ({ color }) => <TabBarIcon name="code" color={color} />,
           }}
         />
 

@@ -6937,6 +6937,18 @@ react-native-screens@3.31.1:
     react-freeze "^1.0.0"
     warn-once "^0.1.0"
 
+react-native-section-alphabet-list@^3.0.0:
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/react-native-section-alphabet-list/-/react-native-section-alphabet-list-3.0.0.tgz#96337985cc4623436b445b93b5bb1021caa38355"
+  integrity sha512-nM7xBwux21dbOxrti9bQLYYmbnd/E8u7feLnr97Ne1E+XpIp7KRMzqA1YG/WPzQ4bYKC6baulQ/KVM4flmzBxw==
+  dependencies:
+    react-native-section-list-get-item-layout "^2.2.3"
+
+react-native-section-list-get-item-layout@^2.2.3:
+  version "2.2.3"
+  resolved "https://registry.yarnpkg.com/react-native-section-list-get-item-layout/-/react-native-section-list-get-item-layout-2.2.3.tgz#152a8efdcb3847dbcbeb04cd2d0de4312d3d2fcb"
+  integrity sha512-fzCW5SiYP6qCZyDHebaElHonIFr8NFrZK9JDkxFLnpxMJih4d+HQ4rHyOs0Z4Gb/FjyCVbRH7RtEnjeQ0XffMg==
+
 react-native-typing-animation@0.1.7:
   version "0.1.7"
   resolved "https://registry.yarnpkg.com/react-native-typing-animation/-/react-native-typing-animation-0.1.7.tgz#8f2cf08d9400ae543a110292eb7d71523dda5528"
