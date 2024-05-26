@@ -1,6 +1,6 @@
 import Colors from "@/constants/Colors";
-import { FlatList, ScrollView } from "react-native";
-import { View, Text } from "@/components/Themed";
+import { FlatList, ScrollView, View } from "react-native";
+import { Text } from "@/components/Themed";
 import { defaultStyles } from "@/constants/Styles";
 import BoxedIcon from "@/components/BoxedIcon";
 import { devices, items, support } from "../../../configs/settings";

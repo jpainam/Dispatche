@@ -44,15 +44,15 @@ const Page = () => {
   const keyboardVerticalOffset = Platform.OS === "ios" ? 90 : 0;
   const router = useRouter();
   const [loading, setLoading] = useState(false);
-  const { signUp, setActive } = useSignUp();
-  const { signIn } = useSignIn();
+  // const { signUp, setActive } = useSignUp();
+  // const { signIn } = useSignIn();
 
   const openLink = () => {
     Linking.openURL("https://galaxies.dev");
   };
 
   const sendOTP = async () => {
-    console.log("sendOTP", phoneNumber);
+    /*console.log("sendOTP", phoneNumber);
     setLoading(true);
 
     try {
@@ -78,11 +78,11 @@ const Page = () => {
           Alert.alert("Error", err.errors[0].message);
         }
       }
-    }
+    }*/
   };
 
   const trySignIn = async () => {
-    console.log("trySignIn", phoneNumber);
+    /*console.log("trySignIn", phoneNumber);
 
     const { supportedFirstFactors } = await signIn!.create({
       identifier: phoneNumber,
@@ -97,7 +97,7 @@ const Page = () => {
     await signIn!.prepareFirstFactor({
       strategy: "phone_code",
       phoneNumberId,
-    });
+    });*/
 
     router.push(`/verify/${phoneNumber}?signin=true`);
     setLoading(false);

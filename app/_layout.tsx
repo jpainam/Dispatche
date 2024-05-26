@@ -58,6 +58,21 @@ function RootLayoutNav() {
       <Stack>
         <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
         <Stack.Screen
+          name="otp"
+          options={{
+            headerTitle: "Enter Your Phone Number",
+            headerBackVisible: false,
+          }}
+        />
+        <Stack.Screen
+          name="verify/[phone]"
+          options={{
+            title: "Verify Your Phone Number",
+            headerShown: true,
+            headerBackTitle: "Edit number",
+          }}
+        />
+        <Stack.Screen
           name="(modals)"
           options={{ headerShown: false, presentation: "modal" }}
         />
