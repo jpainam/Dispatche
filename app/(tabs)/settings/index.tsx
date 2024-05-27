@@ -1,10 +1,11 @@
 import BoxedIcon from "@/components/BoxedIcon";
+
 import { devices, items, support } from "@/configs/settings";
 import Colors from "@/constants/Colors";
 import { defaultStyles } from "@/constants/Styles";
 
 import { Ionicons } from "@expo/vector-icons";
-import { View, ScrollView, Text, FlatList } from "react-native";
+import { ScrollView, Text, FlatList, View } from "react-native";
 import { TouchableOpacity } from "react-native-gesture-handler";
 const Page = () => {
   return (
