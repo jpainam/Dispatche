@@ -9,7 +9,7 @@ import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import "react-native-reanimated";
-
+import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import { useColorScheme } from "@/components/useColorScheme";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
@@ -20,7 +20,7 @@ export {
 
 export const unstable_settings = {
   // Ensure that reloading on `/modal` keeps a back button present.
-  initialRouteName: "(tabs)/listings/index",
+  initialRouteName: "(tabs)",
 };
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
@@ -55,28 +55,32 @@ function RootLayoutNav() {
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-      <Stack>
-        <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
-        <Stack.Screen
-          name="otp"
-          options={{
-            headerTitle: "Enter Your Phone Number",
-            headerBackVisible: false,
-          }}
-        />
-        <Stack.Screen
-          name="verify/[phone]"
-          options={{
-            title: "Verify Your Phone Number",
-            headerShown: true,
-            headerBackTitle: "Edit number",
-          }}
-        />
-        <Stack.Screen
-          name="(modals)"
-          options={{ headerShown: false, presentation: "modal" }}
-        />
-      </Stack>
+      <GestureHandlerRootView style={{ flex: 1 }}>
+        <BottomSheetModalProvider>
+          <Stack>
+            <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
+            <Stack.Screen
+              name="otp"
+              options={{
+                headerTitle: "Enter Your Phone Number",
+                headerBackVisible: false,
+              }}
+            />
+            <Stack.Screen
+              name="verify/[phone]"
+              options={{
+                title: "Verify Your Phone Number",
+                headerShown: true,
+                headerBackTitle: "Edit number",
+              }}
+            />
+            <Stack.Screen
+              name="(modals)"
+              options={{ headerShown: false, presentation: "modal" }}
+            />
+          </Stack>
+        </BottomSheetModalProvider>
+      </GestureHandlerRootView>
     </ThemeProvider>
   );
 }

@@ -1,11 +1,21 @@
-import { StyleSheet } from "react-native";
+import { Button, StyleSheet } from "react-native";
 
+import CustomBottomSheetModal from "@/components/BottomSheet/CustomBottomSheetModal";
 import EditScreenInfo from "@/components/EditScreenInfo";
 import { Text, View } from "@/components/Themed";
+import { BottomSheetModal, useBottomSheetModal } from "@gorhom/bottom-sheet";
+import { useEffect, useRef } from "react";
 
 export default function TabOneScreen() {
+  const bottomSheetRef = useRef<BottomSheetModal>(null);
+  const handlePresentModalPress = () => bottomSheetRef.current?.present();
+  const { dismiss } = useBottomSheetModal();
+
   return (
     <View style={styles.container}>
+      <CustomBottomSheetModal ref={bottomSheetRef} />
+      <Button title="Present Modal" onPress={handlePresentModalPress} />
+      <Button title="Dismiss Modal" onPress={() => dismiss()} />
       <Text style={styles.title}>Tab One</Text>
       <View
         style={styles.separator}

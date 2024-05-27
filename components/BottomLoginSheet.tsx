@@ -58,14 +58,9 @@ const BottomLoginSheet = () => {
 
 const styles = StyleSheet.create({
   container: {
-    position: "absolute",
-    bottom: 0,
-    width: "100%",
     backgroundColor: "#000",
-    borderTopLeftRadius: 20,
-    borderTopRightRadius: 20,
-    padding: 26,
-    gap: 14,
+    paddingHorizontal: 15,
+    gap: 10,
   },
   btnLight: {
     backgroundColor: "#fff",
