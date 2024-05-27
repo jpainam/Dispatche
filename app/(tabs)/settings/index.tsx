@@ -1,11 +1,11 @@
-import Colors from "@/constants/Colors";
-import { FlatList, ScrollView, View } from "react-native";
-import { Text } from "@/components/Themed";
-import { defaultStyles } from "@/constants/Styles";
 import BoxedIcon from "@/components/BoxedIcon";
-import { devices, items, support } from "../../../configs/settings";
-import { Ionicons } from "@expo/vector-icons";
+import { devices, items, support } from "@/configs/settings";
+import Colors from "@/constants/Colors";
+import { defaultStyles } from "@/constants/Styles";
 
+import { Ionicons } from "@expo/vector-icons";
+import { View, ScrollView, Text, FlatList } from "react-native";
+import { TouchableOpacity } from "react-native-gesture-handler";
 const Page = () => {
   return (
     <View style={{ flex: 1, backgroundColor: Colors.background }}>
@@ -21,14 +21,23 @@ const Page = () => {
               <View style={defaultStyles.separator} />
             )}
             renderItem={({ item }) => (
-              <ListItem
-                icon={item.icon}
-                backgroundColor={item.backgroundColor}
-                name={item.name}
-              />
+              <View style={defaultStyles.item}>
+                <BoxedIcon
+                  name={item.icon}
+                  backgroundColor={item.backgroundColor}
+                />
+
+                <Text style={{ fontSize: 18, flex: 1 }}>{item.name}</Text>
+                <Ionicons
+                  name="chevron-forward"
+                  size={20}
+                  color={Colors.gray}
+                />
+              </View>
             )}
           />
         </View>
+
         <View style={defaultStyles.block}>
           <FlatList
             data={items}
@@ -37,14 +46,23 @@ const Page = () => {
               <View style={defaultStyles.separator} />
             )}
             renderItem={({ item }) => (
-              <ListItem
-                icon={item.icon}
-                backgroundColor={item.backgroundColor}
-                name={item.name}
-              />
+              <View style={defaultStyles.item}>
+                <BoxedIcon
+                  name={item.icon}
+                  backgroundColor={item.backgroundColor}
+                />
+
+                <Text style={{ fontSize: 18, flex: 1 }}>{item.name}</Text>
+                <Ionicons
+                  name="chevron-forward"
+                  size={20}
+                  color={Colors.gray}
+                />
+              </View>
             )}
           />
         </View>
+
         <View style={defaultStyles.block}>
           <FlatList
             data={support}
@@ -53,31 +71,38 @@ const Page = () => {
               <View style={defaultStyles.separator} />
             )}
             renderItem={({ item }) => (
-              <ListItem
-                icon={item.icon}
-                backgroundColor={item.backgroundColor}
-                name={item.name}
-              />
+              <View style={defaultStyles.item}>
+                <BoxedIcon
+                  name={item.icon}
+                  backgroundColor={item.backgroundColor}
+                />
+
+                <Text style={{ fontSize: 18, flex: 1 }}>{item.name}</Text>
+                <Ionicons
+                  name="chevron-forward"
+                  size={20}
+                  color={Colors.gray}
+                />
+              </View>
             )}
           />
         </View>
+
+        <TouchableOpacity onPress={() => {}}>
+          <Text
+            style={{
+              color: Colors.primary,
+              fontSize: 18,
+              textAlign: "center",
+              paddingVertical: 14,
+            }}
+          >
+            Log Out
+          </Text>
+        </TouchableOpacity>
       </ScrollView>
     </View>
   );
 };
 
-type ListItemProps = {
-  icon: string;
-  backgroundColor: string;
-  name: string;
-};
-const ListItem = ({ name, backgroundColor, icon }: ListItemProps) => {
-  return (
-    <View style={defaultStyles.item}>
-      <BoxedIcon name={icon} backgroundColor={backgroundColor} />
-      <Text style={{ fontSize: 18, flex: 1 }}>{name}</Text>
-      <Ionicons name="chevron-forward" size={20} color={Colors.gray} />
-    </View>
-  );
-};
 export default Page;

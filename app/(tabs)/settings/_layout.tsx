@@ -1,6 +1,5 @@
 import Colors from "@/constants/Colors";
 import { Stack } from "expo-router";
-
 const Layout = () => {
   return (
     <Stack>
@@ -10,9 +9,8 @@ const Layout = () => {
           title: "Settings",
           headerLargeTitle: true,
           headerShadowVisible: false,
-          headerStyle: {
-            backgroundColor: Colors.background,
-          },
+          headerStyle: { backgroundColor: Colors.background },
+
           headerSearchBarOptions: {
             placeholder: "Search",
           },
@@ -21,5 +19,4 @@ const Layout = () => {
     </Stack>
   );
 };
-
 export default Layout;

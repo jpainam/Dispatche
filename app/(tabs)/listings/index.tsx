@@ -1,5 +1,5 @@
 import { SegmentedControl } from "@/components/SegmentedControl";
-import { Text, View } from "@/components/Themed";
+import { Text, View } from "react-native";
 import Colors from "@/constants/Colors";
 import { Stack } from "expo-router";
 import { useState } from "react";
@@ -54,7 +54,7 @@ const Page = () => {
   }));
 
   return (
-    <View style={{ flex: 1, backgroundColor: Colors.background }}>
+    <View style={{ flex: 1 }}>
       <Stack.Screen
         options={{
           headerTitle: () => {
