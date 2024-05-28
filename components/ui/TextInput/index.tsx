@@ -11,7 +11,7 @@ export function TextInput(props: TextInputProps) {
     "background"
   );
   return (
-    <TextInput
+    <DefaultTextInput
       style={[{ backgroundColor }, style, styles.input]}
       {...otherProps}
     />

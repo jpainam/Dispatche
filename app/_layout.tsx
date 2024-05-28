@@ -1,20 +1,22 @@
+import { useColorScheme } from "@/components/useColorScheme";
+import { SupabaseProvider } from "@/providers/supabase-provider";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
+import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
 import {
   DarkTheme,
   DefaultTheme,
   ThemeProvider,
 } from "@react-navigation/native";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
-import "react-native-reanimated";
-import { BottomSheetModalProvider } from "@gorhom/bottom-sheet";
-import { useColorScheme } from "@/components/useColorScheme";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { ReactQueryDevtools } from "@tanstack/react-query-devtools";
 import { Platform } from "react-native";
+import { GestureHandlerRootView } from "react-native-gesture-handler";
+import "react-native-reanimated";
+import { SafeAreaProvider } from "react-native-safe-area-context";
 
 export {
   // Catch any errors thrown by the Layout component.
@@ -53,10 +55,14 @@ export default function RootLayout() {
   }
 
   return (
-    <QueryClientProvider client={queryClient}>
-      {Platform.OS === "web" && <ReactQueryDevtools />}
-      <RootLayoutNav />
-    </QueryClientProvider>
+    <SupabaseProvider>
+      <SafeAreaProvider>
+        <QueryClientProvider client={queryClient}>
+          {Platform.OS === "web" && <ReactQueryDevtools />}
+          <RootLayoutNav />
+        </QueryClientProvider>
+      </SafeAreaProvider>
+    </SupabaseProvider>
   );
 }
 

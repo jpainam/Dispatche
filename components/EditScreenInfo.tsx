@@ -3,14 +3,17 @@ import { StyleSheet } from "react-native";
 
 import { ExternalLink } from "./ExternalLink";
 import { MonoText } from "./StyledText";
-import { Text, View } from "./ui/Themed";
+import { View } from "./ui/View";
+import { Text } from "./ui/Text";
 
 import Colors from "@/constants/Colors";
+import { TextInput } from "./ui/TextInput";
 
 export default function EditScreenInfo({ path }: { path: string }) {
   return (
     <View>
       <View style={styles.getStartedContainer}>
+        <TextInput />
         <Text
           style={styles.getStartedText}
           lightColor="rgba(0,0,0,0.8)"
