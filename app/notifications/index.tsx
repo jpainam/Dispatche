@@ -1,4 +1,4 @@
-import { View } from "@/components/Themed";
+import { View } from "@/components/ui/View";
 
 const Page = () => {
   return <View>Notifications</View>;

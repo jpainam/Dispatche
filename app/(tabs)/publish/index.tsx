@@ -2,7 +2,8 @@ import { Button, StyleSheet } from "react-native";
 
 import CustomBottomSheetModal from "@/components/BottomSheet/CustomBottomSheetModal";
 import EditScreenInfo from "@/components/EditScreenInfo";
-import { Text, View } from "@/components/Themed";
+import { Text } from "@/components/ui/Text";
+import { View } from "@/components/ui/View";
 import { BottomSheetModal, useBottomSheetModal } from "@gorhom/bottom-sheet";
 import { useEffect, useRef } from "react";
 

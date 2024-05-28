@@ -11,6 +11,9 @@ export default {
   lightGreen: "#DBFFCB",
   red: "#EF0827",
   yellow: "#FCC70B",
+  foregroundColor: "#000",
+  foregroundColorMuted: "#8E8E93",
+  borderInput: "#E5E5EA",
 
   light: {
     text: "#000",
