@@ -25,7 +25,7 @@ SplashScreen.preventAutoHideAsync();
 
 LogBox.ignoreLogs(["Cannot update a component", "You are setting the style"]);
 
-function RootLayoutNav() {
+export default function RootLayoutNav() {
   const [initialSession, setInitialSession] = useState<Session | null>(null);
   const [sessionLoadAttempted, setSessionLoadAttempted] = useState(false);
   const [fontLoaded, error] = useFonts({

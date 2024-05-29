@@ -21,7 +21,7 @@ export function AppleSignIn() {
           nonce: nonce,
         });
         console.log(JSON.stringify({ error, user }, null, 2));
-        if (!error) router.replace("/");
+        //if (!error) router.replace("/");
         if (error) throw error;
       } else {
         throw new Error("No identityToken.");

@@ -114,11 +114,11 @@ export function useProtectedRoute(user: User | null) {
 const replaceRoute = (href: string) => {
   if (Platform.OS === "ios") {
     setTimeout(() => {
-      router.replace(href);
+      //router.replace(href);
     }, 1);
   } else {
     setImmediate(() => {
-      router.replace(href);
+      //router.replace(href);
     });
   }
 };
