@@ -2,10 +2,12 @@ import { Session } from "@supabase/supabase-js";
 import React from "react";
 
 import { AuthProvider } from "./auth";
+import { BottomSheetModalProvider } from "./bottom-sheet-modal";
 import { QueryClientProvider } from "./react-query";
 import { SafeAreaProvider } from "./safe-area";
 // import { TamaguiProvider } from "./tamagui";
-// import { UniversalThemeProvider } from "./theme";
+import { GestureHandler } from "./gesture-handler";
+import { UniversalThemeProvider } from "./theme";
 // import { ToastProvider } from "./toast";
 
 // export { loadThemePromise } from "./theme/UniversalThemeProvider";
@@ -37,9 +39,11 @@ const compose = (providers: React.FC<{ children: React.ReactNode }>[]) =>
   });
 
 const Providers = compose([
-  //   UniversalThemeProvider,
+  UniversalThemeProvider,
   SafeAreaProvider,
+  GestureHandler,
   //   TamaguiProvider,
   //   ToastProvider,
   QueryClientProvider,
+  BottomSheetModalProvider,
 ]);

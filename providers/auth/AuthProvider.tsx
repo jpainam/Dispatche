@@ -59,6 +59,7 @@ export const AuthProvider = ({
         session
           ? {
               session,
+
               isLoading: false,
               error: null,
               supabaseClient: supabase,
