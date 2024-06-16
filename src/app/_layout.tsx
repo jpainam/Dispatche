@@ -1,3 +1,4 @@
+import GlobalBottomSheet from "@/components/GlobalBottomSheet";
 import { supabase } from "@/libs/supabase";
 import { Provider } from "@/providers";
 import { loadThemePromise } from "@/providers/theme";
@@ -73,6 +74,7 @@ export default function RootLayoutNav() {
   return (
     <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
       <Provider initialSession={initialSession}>
+        <GlobalBottomSheet />
         <Stack>
           <Stack.Screen name="(tabs)" options={{ headerShown: false }} />
           <Stack.Screen

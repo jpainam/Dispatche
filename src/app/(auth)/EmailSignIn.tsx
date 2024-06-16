@@ -3,7 +3,7 @@ import { Alert, StyleSheet, View } from "react-native";
 import { supabase } from "@/libs/supabase";
 import { Input } from "@rneui/themed";
 
-export default function EmailForm() {
+export default function EmailSignIn() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);

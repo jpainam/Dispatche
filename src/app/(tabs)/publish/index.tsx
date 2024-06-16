@@ -6,17 +6,28 @@ import { Text } from "@/components/ui/Text";
 import { View } from "@/components/ui/View";
 import { BottomSheetModal, useBottomSheetModal } from "@gorhom/bottom-sheet";
 import { useEffect, useRef } from "react";
+import { useBottomSheet } from "@/hooks/use-bottomsheet";
+import BottomLoginSheet from "@/components/Auth/BottomLoginSheet";
 
 export default function TabOneScreen() {
   const bottomSheetRef = useRef<BottomSheetModal>(null);
   const handlePresentModalPress = () => bottomSheetRef.current?.present();
   const { dismiss } = useBottomSheetModal();
+  const { openBottomSheet, closeBottomSheet } = useBottomSheet();
 
   return (
     <View style={styles.container}>
-      <CustomBottomSheetModal ref={bottomSheetRef} />
-      <Button title="Present Modal" onPress={handlePresentModalPress} />
-      <Button title="Dismiss Modal" onPress={() => dismiss()} />
+      {/* <CustomBottomSheetModal ref={bottomSheetRef} /> */}
+      <Button
+        title="Present Modal"
+        onPress={() => {
+          openBottomSheet({
+            snapPoints: ["40%", "75%"],
+            component: <BottomLoginSheet />,
+          });
+        }}
+      />
+      <Button title="Dismiss Modal" onPress={() => closeBottomSheet()} />
       <Text style={styles.title}>Tab One</Text>
       <View
         style={styles.separator}

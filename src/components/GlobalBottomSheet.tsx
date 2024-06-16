@@ -1,11 +1,26 @@
-import { View, StyleSheet, Text } from "react-native";
-import React, { forwardRef, useCallback, useMemo } from "react";
+import { useBottomSheet } from "@/hooks/use-bottomsheet";
 import { BottomSheetBackdrop, BottomSheetModal } from "@gorhom/bottom-sheet";
-import BottomLoginSheet from "../Auth/BottomLoginSheet";
-export type Ref = BottomSheetModal;
+import { useSegments } from "expo-router";
+import React, { useCallback, useEffect, useMemo, useRef } from "react";
+import { StyleSheet } from "react-native";
 
-const CustomBottomSheetModal = forwardRef<Ref>((props, ref) => {
-  const snapPoints = useMemo(() => ["40%", "75%"], []);
+export default function GlobalBottomSheet() {
+  const ref = useRef<BottomSheetModal>(null);
+  const { isOpen, component, snapPoints, closeBottomSheet } = useBottomSheet();
+  const segments = useSegments();
+  useEffect(() => {
+    closeBottomSheet();
+  }, [segments]);
+
+  useEffect(() => {
+    if (isOpen) {
+      ref.current?.present();
+    } else {
+      ref.current?.dismiss();
+    }
+  }, [isOpen]);
+
+  const snaps = useMemo(() => snapPoints, [snapPoints]);
 
   const renderBackdrop = useCallback(
     (props: any) => (
@@ -26,12 +41,12 @@ const CustomBottomSheetModal = forwardRef<Ref>((props, ref) => {
       backgroundStyle={styles.contentContainer}
       handleIndicatorStyle={{ backgroundColor: "#fff" }}
       enablePanDownToClose={true}
-      snapPoints={snapPoints}
+      snapPoints={snaps}
     >
-      <BottomLoginSheet />
+      {component}
     </BottomSheetModal>
   );
-});
+}
 
 const styles = StyleSheet.create({
   contentContainer: {
@@ -45,5 +60,3 @@ const styles = StyleSheet.create({
     padding: 20,
   },
 });
-
-export default CustomBottomSheetModal;
