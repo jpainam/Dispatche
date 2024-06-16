@@ -4,6 +4,7 @@ import { PropsWithChildren, useEffect, useState } from "react";
 import { ActivityIndicator } from "react-native";
 import { StreamChat } from "stream-chat";
 import { Chat, OverlayProvider } from "stream-chat-expo";
+import { tokenProvider } from "./tokenProvider";
 
 const client = StreamChat.getInstance(
   `${process.env.EXPO_PUBLIC_STREAM_API_KEY}`
@@ -13,11 +14,6 @@ export const StreamChatProvider = ({ children }: PropsWithChildren) => {
   const [isReady, setIsReady] = useState(false);
   useSession();
   const session = useSession();
-
-  const tokenProvider = async () => {
-    const { data } = await supabase.functions.invoke("stream-token");
-    return data.token;
-  };
 
   const fetchProfile = async (userId: string) => {
     let { data, error } = await supabase
