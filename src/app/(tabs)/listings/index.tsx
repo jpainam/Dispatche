@@ -4,7 +4,7 @@ import Colors from "@/constants/Colors";
 import { Stack } from "expo-router";
 import { useState } from "react";
 import { ScrollView, StyleSheet, TouchableOpacity, Image } from "react-native";
-import calls from "@/assets/data/calls.json";
+import calls from "../../../../assets/data/calls.json";
 import Animated, {
   CurvedTransition,
   FadeInUp,

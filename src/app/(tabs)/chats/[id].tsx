@@ -14,7 +14,7 @@ import {
   IMessage,
 } from "react-native-gifted-chat";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
-import messageData from "@/assets/data/messages.json";
+import messageData from "../../../../assets/data/messages.json";
 
 const Page = () => {
   const [messages, setMessages] = useState<IMessage[]>([]);
@@ -99,7 +99,7 @@ const Page = () => {
 
   return (
     <ImageBackground
-      source={require("@/assets/images/pattern.png")}
+      source={require("../../../../assets/images/pattern.png")}
       style={{
         flex: 1,
         backgroundColor: Colors.background,

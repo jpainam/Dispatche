@@ -1,12 +1,14 @@
 import { supabase } from "@/libs/supabase";
 import { useQuery } from "@tanstack/react-query";
-import { useSessionContext } from "./use-session-context";
+
+import { useSession } from '@/providers/session';
+import { Profile } from "@/types/profile";
 
 export function useProfile() {
-  const { session } = useSessionContext();
+  const  session  = useSession();
   const user = session?.user;
-  const { data, isLoading, refetch } = useQuery({
-    queryKey: ["profile", user?.id || ""],
+  const query = useQuery({
+    queryKey: [`profile/${user?.id}`],
     queryFn: async () => {
       if (!user?.id) return null;
       const { data, error } = await supabase
@@ -22,9 +24,9 @@ export function useProfile() {
         }
         throw new Error(error.message);
       }
-      return data;
+      return data as Profile | null;
     },
   });
 
-  return { data, isLoading, refetch };
+  return { ...query };
 }

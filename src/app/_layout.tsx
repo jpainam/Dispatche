@@ -31,8 +31,8 @@ export default function RootLayoutNav() {
   const [themeLoaded, setThemeLoaded] = useState(false);
   const [sessionLoadAttempted, setSessionLoadAttempted] = useState(false);
   const [fontLoaded, error] = useFonts({
-    Inter: require("../assets/fonts/Inter-Medium.ttf"),
-    InterBold: require("../assets/fonts/Inter-Bold.ttf"),
+    Inter: require("../../assets/fonts/Inter-Medium.ttf"),
+    InterBold: require("../../assets/fonts/Inter-Bold.ttf"),
     ...FontAwesome.font,
   });
 

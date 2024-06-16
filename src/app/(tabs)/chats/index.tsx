@@ -1,5 +1,5 @@
 import { View, Text, ScrollView, FlatList } from "react-native";
-import chats from "@/assets/data/chats.json";
+import chats from "../../../../assets/data/chats.json";
 import ChatRow from "@/components/ChatRow";
 import { defaultStyles } from "@/constants/Styles";
 
