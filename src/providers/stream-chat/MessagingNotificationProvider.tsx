@@ -2,6 +2,8 @@ import { PropsWithChildren, useEffect, useState } from "react";
 import messaging from "@react-native-firebase/messaging";
 import { StreamChat } from "stream-chat";
 import { useSession } from "../session";
+import { ActivityIndicator } from "react-native";
+import { View } from "@/components/ui/View";
 
 const client = StreamChat.getInstance(
   `${process.env.EXPO_PUBLIC_STREAM_API_KEY}`
@@ -26,8 +28,8 @@ export const MessagingNotificationProvider = ({
 
   useEffect(() => {
     // Register FCM token with stream chat server.
-    if (!session?.user) return;
     const registerPushToken = async () => {
+      if (!session?.user) return;
       const token = await messaging().getToken();
       const push_provider = "firebase";
       const push_provider_name = "FirebaseFCM"; // name an alias for your push provider (optional)
@@ -56,7 +58,11 @@ export const MessagingNotificationProvider = ({
   }, []);
 
   if (!isReady) {
-    return null;
+    return (
+      <View style={{ flex: 1, alignItems: "center", justifyContent: "center" }}>
+        <ActivityIndicator />
+      </View>
+    );
   }
 
   return <>{children}</>;

@@ -69,6 +69,7 @@ export default function RootLayoutNav() {
   if (!fontLoaded || !themeLoaded || !sessionLoadAttempted) {
     return null;
   }
+  console.log("RootLayoutNav  Runing");
   return (
     <View style={{ flex: 1 }} onLayout={onLayoutRootView}>
       <Provider initialSession={initialSession}>

@@ -43,13 +43,14 @@ const compose = (providers: React.FC<{ children: React.ReactNode }>[]) =>
   });
 
 const Providers = compose([
+  GestureHandler,
   UniversalThemeProvider,
   SafeAreaProvider,
-  GestureHandler,
+  QueryClientProvider,
   StreamChatProvider,
   MessagingNotificationProvider,
   //   TamaguiProvider,
   //   ToastProvider,
-  QueryClientProvider,
+
   BottomSheetModalProvider,
 ]);

@@ -11,6 +11,7 @@ export const UniversalThemeProvider = ({
   children: React.ReactNode;
 }) => {
   const colorScheme = useColorScheme();
+  console.log("UniversalThemeProvider Runing");
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
       {children}

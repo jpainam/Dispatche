@@ -66,17 +66,15 @@ const ChatMessageBox = ({
   };
 
   return (
-    <GestureHandlerRootView>
-      <Swipeable
-        ref={updateRowRef}
-        friction={2}
-        rightThreshold={40}
-        renderLeftActions={renderRightAction}
-        onSwipeableWillOpen={onSwipeOpenAction}
-      >
-        <Message {...props} />
-      </Swipeable>
-    </GestureHandlerRootView>
+    <Swipeable
+      ref={updateRowRef}
+      friction={2}
+      rightThreshold={40}
+      renderLeftActions={renderRightAction}
+      onSwipeableWillOpen={onSwipeOpenAction}
+    >
+      <Message {...props} />
+    </Swipeable>
   );
 };
 

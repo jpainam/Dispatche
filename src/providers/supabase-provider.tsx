@@ -86,7 +86,7 @@ export const SupabaseProvider = ({ children }: SupabaseProviderProps) => {
       //router.replace("/(public)/welcome");
     }
 
-    /* HACK: Something must be rendered when determining the initial auth state... 
+    /* HACK: Something must be rendered when determining the initial auth state...
 		instead of creating a loading screen, we use the SplashScreen and hide it after
 		a small delay (500 ms)
 		*/
