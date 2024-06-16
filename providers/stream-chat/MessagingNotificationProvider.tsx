@@ -30,7 +30,7 @@ export const MessagingNotificationProvider = ({
     const registerPushToken = async () => {
       const token = await messaging().getToken();
       const push_provider = "firebase";
-      const push_provider_name = "Firebase"; // name an alias for your push provider (optional)
+      const push_provider_name = "FirebaseFCM"; // name an alias for your push provider (optional)
       client.addDevice(
         token,
         push_provider,

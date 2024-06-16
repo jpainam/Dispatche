@@ -9,9 +9,7 @@ import { SafeAreaProvider } from "./safe-area";
 import { SessionContextProvider } from "./session";
 import { UniversalThemeProvider } from "./theme";
 import {
-  StreamCallProvider,
   StreamChatProvider,
-  StreamVideoProvider,
   MessagingNotificationProvider,
 } from "./stream-chat";
 
@@ -49,8 +47,6 @@ const Providers = compose([
   SafeAreaProvider,
   GestureHandler,
   StreamChatProvider,
-  StreamCallProvider,
-  StreamVideoProvider,
   MessagingNotificationProvider,
   //   TamaguiProvider,
   //   ToastProvider,

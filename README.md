@@ -6,6 +6,8 @@ cmd + ctrl + z  to open the debug in the ioS simulator
 
 `xcrun simctl list devices`
 
+`npx supabase functions serve`
+
 # Bugs
 
 - `error: Codegen did not run properly in your project. Please reinstall cocoapods with bundle exec pod install.`

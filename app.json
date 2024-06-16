@@ -69,25 +69,8 @@
           }
         }
       ],
-      [
-        "@stream-io/video-react-native-sdk",
-        {
-          "ringingPushNotifications": {
-            "disableVideoIos": false,
-            "includesCallsInRecentsIos": true
-          }
-        }
-      ],
-      [
-        "@config-plugins/react-native-webrtc",
-        {
-          "cameraPermission": "Allow $(PRODUCT_NAME) to access your camera",
-          "microphonePermission": "Allow $(PRODUCT_NAME) to access your microphone"
-        }
-      ],
       "@react-native-firebase/app",
       "@react-native-firebase/messaging",
-      "@config-plugins/react-native-callkeep",
       "expo-apple-authentication",
       "expo-secure-store"
     ],

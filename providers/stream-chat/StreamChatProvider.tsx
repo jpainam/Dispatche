@@ -58,9 +58,9 @@ export const StreamChatProvider = ({ children }: PropsWithChildren) => {
     };
   }, [session?.user?.id]);
 
-  //   if (!isReady) {
-  //     return <ActivityIndicator />;
-  //   }
+  if (!isReady) {
+    return <ActivityIndicator />;
+  }
 
   return (
     <OverlayProvider>

@@ -387,7 +387,6 @@ PODS:
   - hermes-engine (0.74.1):
     - hermes-engine/Pre-built (= 0.74.1)
   - hermes-engine/Pre-built (0.74.1)
-  - JitsiWebRTC (118.0.0)
   - libwebp (1.3.2):
     - libwebp/demux (= 1.3.2)
     - libwebp/mux (= 1.3.2)
@@ -1569,8 +1568,6 @@ PODS:
     - React-utils (= 0.74.1)
   - ReactNativeIncallManager (4.2.0):
     - React-Core
-  - RNCallKeep (4.3.13):
-    - React
   - RNCAsyncStorage (1.23.1):
     - React-Core
   - RNFBApp (20.1.0):
@@ -1655,17 +1652,13 @@ PODS:
     - Yoga
   - RNSVG (14.1.0):
     - React-Core
+  - RNVoipPushNotification (3.3.2):
+    - React-Core
   - SDWebImage/Core (5.19.2)
   - SDWebImageWebPCoder (0.14.6):
     - libwebp (~> 1.0)
     - SDWebImage/Core (~> 5.17)
   - SocketRocket (0.7.0)
-  - stream-react-native-webrtc (118.1.0):
-    - JitsiWebRTC (~> 118.0.0)
-    - React-Core
-  - stream-video-react-native (0.8.2):
-    - React-Core
-    - stream-react-native-webrtc
   - Yoga (0.0.0)
 
 DEPENDENCIES:
@@ -1759,7 +1752,6 @@ DEPENDENCIES:
   - React-utils (from `../node_modules/react-native/ReactCommon/react/utils`)
   - ReactCommon/turbomodule/core (from `../node_modules/react-native/ReactCommon`)
   - ReactNativeIncallManager (from `../node_modules/react-native-incall-manager`)
-  - RNCallKeep (from `../node_modules/react-native-callkeep`)
   - "RNCAsyncStorage (from `../node_modules/@react-native-async-storage/async-storage`)"
   - "RNFBApp (from `../node_modules/@react-native-firebase/app`)"
   - "RNFBMessaging (from `../node_modules/@react-native-firebase/messaging`)"
@@ -1769,8 +1761,7 @@ DEPENDENCIES:
   - RNReanimated (from `../node_modules/react-native-reanimated`)
   - RNScreens (from `../node_modules/react-native-screens`)
   - RNSVG (from `../node_modules/react-native-svg`)
-  - "stream-react-native-webrtc (from `../node_modules/@stream-io/react-native-webrtc`)"
-  - "stream-video-react-native (from `../node_modules/@stream-io/video-react-native-sdk`)"
+  - RNVoipPushNotification (from `../node_modules/react-native-voip-push-notification`)
   - Yoga (from `../node_modules/react-native/ReactCommon/yoga`)
 
 SPEC REPOS:
@@ -1787,7 +1778,6 @@ SPEC REPOS:
     - GoogleUtilities
     - GTMAppAuth
     - GTMSessionFetcher
-    - JitsiWebRTC
     - libwebp
     - nanopb
     - PromisesObjC
@@ -1973,8 +1963,6 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native/ReactCommon"
   ReactNativeIncallManager:
     :path: "../node_modules/react-native-incall-manager"
-  RNCallKeep:
-    :path: "../node_modules/react-native-callkeep"
   RNCAsyncStorage:
     :path: "../node_modules/@react-native-async-storage/async-storage"
   RNFBApp:
@@ -1993,10 +1981,8 @@ EXTERNAL SOURCES:
     :path: "../node_modules/react-native-screens"
   RNSVG:
     :path: "../node_modules/react-native-svg"
-  stream-react-native-webrtc:
-    :path: "../node_modules/@stream-io/react-native-webrtc"
-  stream-video-react-native:
-    :path: "../node_modules/@stream-io/video-react-native-sdk"
+  RNVoipPushNotification:
+    :path: "../node_modules/react-native-voip-push-notification"
   Yoga:
     :path: "../node_modules/react-native/ReactCommon/yoga"
 
@@ -2051,7 +2037,6 @@ SPEC CHECKSUMS:
   GTMAppAuth: f69bd07d68cd3b766125f7e072c45d7340dea0de
   GTMSessionFetcher: 8000756fc1c19d2e5697b90311f7832d2e33f6cd
   hermes-engine: 16b8530de1b383cdada1476cf52d1b52f0692cbc
-  JitsiWebRTC: 3a41671ef65a51d7204323814b055a2690b921c7
   libwebp: 1786c9f4ff8a279e4dac1e8f385004d5fc253009
   nanopb: 438bc412db1928dac798aa6fd75726007be04262
   PromisesObjC: f5707f49cb48b9636751c5b2e7d227e43fba9f47
@@ -2105,7 +2090,6 @@ SPEC CHECKSUMS:
   React-utils: 8e9c5cd66f0788e156a1fcb5cd69593ec8607611
   ReactCommon: eb4c4a9c43fcc0d93f922d0fdada24638429e515
   ReactNativeIncallManager: bfc9c67358cd524882a7c4116dcb311ac2293d4b
-  RNCallKeep: 2015ba5eb74666407e3613fd54c65bd227624a0a
   RNCAsyncStorage: 826b603ae9c0f88b5ac4e956801f755109fa4d5c
   RNFBApp: 1ae7462cddf74a49df206d3418bc0170f8fa53e5
   RNFBMessaging: 85f661b9f16e2b081e6809ef63d3daa4458b9042
@@ -2115,13 +2099,12 @@ SPEC CHECKSUMS:
   RNReanimated: d51431fd3597a8f8320319dce8e42cee82a5445f
   RNScreens: 30249f9331c3b00ae7cb7922e11f58b3ed369c07
   RNSVG: ba3e7232f45e34b7b47e74472386cf4e1a676d0a
+  RNVoipPushNotification: 543e18f83089134a35e7f1d2eba4c8b1f7776b08
   SDWebImage: dfe95b2466a9823cf9f0c6d01217c06550d7b29a
   SDWebImageWebPCoder: e38c0a70396191361d60c092933e22c20d5b1380
   SocketRocket: abac6f5de4d4d62d24e11868d7a2f427e0ef940d
-  stream-react-native-webrtc: 4ccf61161f77c57b9aa45f78cb7f69b7d91f3e9f
-  stream-video-react-native: dd32d2a7e4251a476fcec6d19dbea3b5a05dfd94
   Yoga: d02ee88821190d82b2daa5cd15640a82ffafaaab
 
-PODFILE CHECKSUM: daf45ee287e1b843f384d02f8e2bce3611846904
+PODFILE CHECKSUM: d6ba3f9ce18e5b65bca0a3a6cfa452e88f4e69b5
 
 COCOAPODS: 1.12.1

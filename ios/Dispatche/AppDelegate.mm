@@ -1,8 +1,4 @@
 #import "AppDelegate.h"
-#import "StreamVideoReactNative.h"
-#import "RNVoipPushNotificationManager.h"
-#import <PushKit/PushKit.h>
-#import "RNCallKeep.h"
 #import <Firebase/Firebase.h>
 
 #import <React/RCTBundleURLProvider.h>
@@ -12,14 +8,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-  [RNVoipPushNotificationManager voipRegistration];
-  NSString *localizedAppName = [[[NSBundle mainBundle] localizedInfoDictionary] objectForKey:@"CFBundleDisplayName"];
-  NSString *appName = [[[NSBundle mainBundle] infoDictionary]objectForKey :@"CFBundleDisplayName"];
-  [RNCallKeep setup:@{
-    @"appName": localizedAppName != nil ? localizedAppName : appName,
-    @"supportsVideo": @YES,
-    @"includesCallsInRecents": @YES,
-  }];
 // @generated begin @react-native-firebase/app-didFinishLaunchingWithOptions - expo prebuild (DO NOT MODIFY) sync-ecd111c37e49fdd1ed6354203cd6b1e2a38cccda
 [FIRApp configure];
 // @generated end @react-native-firebase/app-didFinishLaunchingWithOptions
@@ -73,39 +61,6 @@
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler
 {
   return [super application:application didReceiveRemoteNotification:userInfo fetchCompletionHandler:completionHandler];
-}
-
-- (void)pushRegistry:(PKPushRegistry *)registry didUpdatePushCredentials:(PKPushCredentials *)credentials forType:(PKPushType)type {
-  [RNVoipPushNotificationManager didUpdatePushCredentials:credentials forType:(NSString *)type];
-}
-
-- (void)pushRegistry:(PKPushRegistry *)registry didReceiveIncomingPushWithPayload:(PKPushPayload *)payload forType:(PKPushType)type withCompletionHandler:(void (^)(void))completion {
-// send event to JS
-  [RNVoipPushNotificationManager didReceiveIncomingPushWithPayload:payload forType:(NSString *)type];
-
-  // process the payload
-  NSDictionary *stream = payload.dictionaryPayload[@"stream"];
-  NSString *uuid = [[NSUUID UUID] UUIDString];
-  NSString *createdCallerName = stream[@"created_by_display_name"];
-  NSString *cid = stream[@"call_cid"];
-
-  [StreamVideoReactNative registerIncomingCall:cid uuid:uuid];
-
-  [RNVoipPushNotificationManager addCompletionHandler:uuid completionHandler:completion];
-
-  // display the incoming call notification
-  [RNCallKeep reportNewIncomingCall: uuid
-                             handle: createdCallerName
-                         handleType: @"generic"
-                           hasVideo: YES
-                localizedCallerName: createdCallerName
-                    supportsHolding: YES
-                       supportsDTMF: YES
-                   supportsGrouping: YES
-                 supportsUngrouping: YES
-                        fromPushKit: YES
-                            payload: stream
-              withCompletionHandler: nil];
 }
 
 @end
