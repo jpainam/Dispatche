@@ -8,7 +8,12 @@ import { QueryClientProvider } from "./react-query";
 import { SafeAreaProvider } from "./safe-area";
 import { SessionContextProvider } from "./session";
 import { UniversalThemeProvider } from "./theme";
-import { StreamCallProvider, StreamChatProvider } from "./stream-chat";
+import {
+  StreamCallProvider,
+  StreamChatProvider,
+  StreamVideoProvider,
+  MessagingNotificationProvider,
+} from "./stream-chat";
 
 export function Provider({
   initialSession,
@@ -45,6 +50,8 @@ const Providers = compose([
   GestureHandler,
   StreamChatProvider,
   StreamCallProvider,
+  StreamVideoProvider,
+  MessagingNotificationProvider,
   //   TamaguiProvider,
   //   ToastProvider,
   QueryClientProvider,

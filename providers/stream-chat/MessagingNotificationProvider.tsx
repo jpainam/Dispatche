@@ -7,7 +7,9 @@ const client = StreamChat.getInstance(
   `${process.env.EXPO_PUBLIC_STREAM_API_KEY}`
 );
 
-export default function NotificationsProvider({ children }: PropsWithChildren) {
+export const MessagingNotificationProvider = ({
+  children,
+}: PropsWithChildren) => {
   const [isReady, setIsReady] = useState(false);
   const session = useSession();
 
@@ -58,4 +60,4 @@ export default function NotificationsProvider({ children }: PropsWithChildren) {
   }
 
   return <>{children}</>;
-}
+};
