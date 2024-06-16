@@ -17,3 +17,5 @@ export const UniversalThemeProvider = ({
     </ThemeProvider>
   );
 };
+
+export const loadThemePromise = new Promise<any>((res) => res({}));

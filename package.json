@@ -57,6 +57,7 @@
     "react-native-url-polyfill": "^2.0.0",
     "react-native-web": "~0.19.10",
     "solito": "^4.2.2",
+    "stream-chat-expo": "^5.31.1",
     "zod": "^3.23.8"
   },
   "devDependencies": {

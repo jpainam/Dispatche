@@ -1,5 +1,6 @@
 import { supabase } from "@/libs/supabase";
 import { Provider } from "@/providers";
+import { loadThemePromise } from "@/providers/theme";
 import FontAwesome from "@expo/vector-icons/FontAwesome";
 import { Session } from "@supabase/supabase-js";
 import { useFonts } from "expo-font";
@@ -27,6 +28,7 @@ LogBox.ignoreLogs(["Cannot update a component", "You are setting the style"]);
 
 export default function RootLayoutNav() {
   const [initialSession, setInitialSession] = useState<Session | null>(null);
+  const [themeLoaded, setThemeLoaded] = useState(false);
   const [sessionLoadAttempted, setSessionLoadAttempted] = useState(false);
   const [fontLoaded, error] = useFonts({
     Inter: require("../assets/fonts/Inter-Medium.ttf"),
@@ -52,13 +54,19 @@ export default function RootLayoutNav() {
       });
   }, []);
 
+  useEffect(() => {
+    loadThemePromise.then(() => {
+      setThemeLoaded(true);
+    });
+  }, []);
+
   const onLayoutRootView = useCallback(async () => {
     if (fontLoaded && sessionLoadAttempted) {
       await SplashScreen.hideAsync();
     }
   }, [fontLoaded, sessionLoadAttempted]);
 
-  if (!fontLoaded || !sessionLoadAttempted) {
+  if (!fontLoaded || !themeLoaded || !sessionLoadAttempted) {
     return null;
   }
   return (

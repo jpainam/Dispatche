@@ -8,8 +8,8 @@
 //   Theme,
 //   YStack,
 // } from "@my/ui";
-import { ChevronLeft } from "@tamagui/lucide-icons";
 
+import { supabase } from "@/libs/supabase";
 import { useEffect } from "react";
 import {
   FormProvider,
@@ -17,13 +17,14 @@ import {
   useFormContext,
   useWatch,
 } from "react-hook-form";
+import { Button } from "react-native";
 import { createParam } from "solito";
 import { Link } from "solito/link";
 import { z } from "zod";
 import { FormWrapper } from "../FormFields/FormWrapper";
-import { Button } from "react-native";
-import { supabase } from "@/libs/supabase";
-import { SchemaForm } from "../FormFields/SchemaForm";
+import { formFields, SchemaForm } from "../FormFields/SchemaForm";
+import { Text } from "../ui/Text";
+import { View } from "../ui/View";
 
 const { useParams, useUpdateParams } = createParam<{ email?: string }>();
 
@@ -72,11 +73,7 @@ export const ResetPasswordScreen = () => {
           renderAfter={({ submit }) => {
             return (
               <>
-                <Theme inverse>
-                  <SubmitButton onPress={() => submit()} br="$10">
-                    Send Link
-                  </SubmitButton>
-                </Theme>
+                <Button title=" Send Link" onPress={() => submit()} />
                 <SignInLink />
               </>
             );
@@ -84,13 +81,15 @@ export const ResetPasswordScreen = () => {
         >
           {(fields) => (
             <>
-              <YStack gap="$3" mb="$4">
-                <H2 $sm={{ size: "$8" }}>Reset your password</H2>
-                <Paragraph theme="alt1">
+              <View
+                style={{ flexDirection: "column", gap: 3, marginBottom: 4 }}
+              >
+                <Text style={{ fontSize: 18 }}>Reset your password</Text>
+                <Text>
                   Type in your email and we&apos;ll send you a link to reset
                   your password
-                </Paragraph>
-              </YStack>
+                </Text>
+              </View>
               {Object.values(fields)}
             </>
           )}
@@ -140,9 +139,10 @@ const SignInLink = () => {
     <Link
       href={`/sign-in?${new URLSearchParams(email ? { email } : undefined)}`}
     >
-      <Paragraph ta="center" theme="alt1">
-        Done resetting? <Text textDecorationLine="underline">Sign in</Text>
-      </Paragraph>
+      <Text style={{}}>
+        Done resetting?{" "}
+        <Text style={{ textDecorationLine: "underline" }}>Sign in</Text>
+      </Text>
     </Link>
   );
 };
