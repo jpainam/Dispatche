@@ -8,7 +8,6 @@ import { SafeAreaProvider } from "./safe-area";
 // import { TamaguiProvider } from "./tamagui";
 import { GestureHandler } from "./gesture-handler";
 import { UniversalThemeProvider } from "./theme";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
 // import { ToastProvider } from "./toast";
 
 // export { loadThemePromise } from "./theme/UniversalThemeProvider";
