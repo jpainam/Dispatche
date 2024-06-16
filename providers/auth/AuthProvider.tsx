@@ -1,88 +1,20 @@
-import {
-  Session,
-  SessionContext as SessionContextHelper,
-} from "@supabase/auth-helpers-react";
-import { AuthError, User } from "@supabase/supabase-js";
-import { router, useSegments } from "expo-router";
-import { createContext, useEffect, useState } from "react";
+import { User } from "@supabase/supabase-js";
+import { useSegments } from "expo-router";
+import { PropsWithChildren, useEffect } from "react";
 import { Platform } from "react-native";
 
-import { AuthStateChangeHandler } from "./AuthStateChangeHandler";
-import { supabase } from "@/libs/supabase";
+import { useSession } from "../session";
 
-type AuthProviderProps = {
-  initialSession?: Session | null;
-  children?: React.ReactNode;
-};
+export const AuthProvider = ({ children }: PropsWithChildren) => {
+  const session = useSession();
 
-export const SessionContext = createContext<SessionContextHelper>({
-  session: null,
-  error: null,
-  isLoading: false,
-  supabaseClient: supabase,
-});
+  //useProtectedRoute(session?.user ?? null);
 
-export const AuthProvider = ({
-  children,
-  initialSession,
-}: AuthProviderProps) => {
-  const [session, setSession] = useState<Session | null>(
-    initialSession || null
-  );
-  const [error, setError] = useState<AuthError | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  useProtectedRoute(session?.user ?? null);
   useEffect(() => {
-    setIsLoading(true);
-    supabase.auth
-      .getSession()
-      .then(({ data: { session: newSession } }) => {
-        setSession(newSession);
-      })
-      .catch((error) => setError(new AuthError(error.message)))
-      .finally(() => setIsLoading(false));
-  }, []);
-  useEffect(() => {
-    const {
-      data: { subscription },
-    } = supabase.auth.onAuthStateChange((_event, newSession) => {
-      setSession(newSession);
-    });
-    return () => {
-      subscription.unsubscribe();
-    };
+    // check if use exist, and redirect, check if first time, redirect to onboarding
   }, []);
 
-  return (
-    <SessionContext.Provider
-      value={
-        session
-          ? {
-              session,
-
-              isLoading: false,
-              error: null,
-              supabaseClient: supabase,
-            }
-          : error
-          ? {
-              error,
-              isLoading: false,
-              session: null,
-              supabaseClient: supabase,
-            }
-          : {
-              error: null,
-              isLoading,
-              session: null,
-              supabaseClient: supabase,
-            }
-      }
-    >
-      <AuthStateChangeHandler />
-      {children}
-    </SessionContext.Provider>
-  );
+  return <>{children}</>;
 };
 
 export function useProtectedRoute(user: User | null) {

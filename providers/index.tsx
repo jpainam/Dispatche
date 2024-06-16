@@ -1,16 +1,14 @@
 import { Session } from "@supabase/supabase-js";
 import React from "react";
 
-import { AuthProvider } from "./auth";
+import { supabase } from "@/libs/supabase";
 import { BottomSheetModalProvider } from "./bottom-sheet-modal";
+import { GestureHandler } from "./gesture-handler";
 import { QueryClientProvider } from "./react-query";
 import { SafeAreaProvider } from "./safe-area";
-// import { TamaguiProvider } from "./tamagui";
-import { GestureHandler } from "./gesture-handler";
+import { SessionContextProvider } from "./session";
 import { UniversalThemeProvider } from "./theme";
-// import { ToastProvider } from "./toast";
-
-// export { loadThemePromise } from "./theme/UniversalThemeProvider";
+import { StreamCallProvider, StreamChatProvider } from "./stream-chat";
 
 export function Provider({
   initialSession,
@@ -20,9 +18,12 @@ export function Provider({
   children: React.ReactNode;
 }) {
   return (
-    <AuthProvider initialSession={initialSession}>
+    <SessionContextProvider
+      supabaseClient={supabase}
+      initialSession={initialSession}
+    >
       <Providers>{children}</Providers>
-    </AuthProvider>
+    </SessionContextProvider>
   );
 }
 
@@ -42,6 +43,8 @@ const Providers = compose([
   UniversalThemeProvider,
   SafeAreaProvider,
   GestureHandler,
+  StreamChatProvider,
+  StreamCallProvider,
   //   TamaguiProvider,
   //   ToastProvider,
   QueryClientProvider,
